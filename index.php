@@ -6,7 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./CSS/google.css">
     <style>
-        
+        *{
+          /* 清除所有標籤的內外距及空白 */
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+        }
+
         .bg
         {
             color:greenyellow !important;
@@ -58,11 +64,17 @@
             font-family: 'Ultra', serif;
             background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
             background-attachment:fixed;
+            display:flex;
+          align-items:center;
+          justify-content:center;
+          height:100vh;
                
         }
       
         #calendar_border{
-            position:relative; left:300px; top:105px;
+            position:relative;
+            left:0px;
+            /* top:105px; */
             width:350px;
             height:640px;
             background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
@@ -78,9 +90,12 @@
             
         }
         #calendar_out{   
-            position:absolute; left:310px; top:185px;
+            /* position:absolute; */
+
+            left:0;
+            /* top:185px; */
             background-image:url(./17.jpg);
-            width:1200px;
+            width:850px;
             height:610px;
             
             box-sizing:border-box;
@@ -111,6 +126,7 @@
            
         td{ 
             vertical-align:text-top;
+            text-align:center;    /*文字置中對齊*/
             color:white;
             width:80px;
             height:80px;
@@ -122,13 +138,13 @@
             border-radius:40%;
             
         }
-       
+    .wrapper{
+      position:relative;
+      display:flex;
+      align-items:center;
       
-            
-        
-      
-        
 
+    }   
     </style>
     <title>功課日期</title>
 </head>
@@ -166,17 +182,18 @@
             
                  
             $todayDays=date("d");
-            echo "<br>";
+            //echo "<br>";
             $start="$year-$month-01";
             $startDay=date("w",strtotime($start));  
             $days=date("t",strtotime($start));        
             $endDay=date("w",strtotime("$year-$month-$days"));
-            echo "<br>";
+            //echo "<br>";
 
             
            
        ?>
-       <br> 
+       <!-- <br> -->
+<div class="wrapper">
        <div id="calendar_border">
        <?php
         echo "<div class='day time'>"."<h2>" .date("Y-m",strtotime($start))."</h2>"."</div>";
@@ -184,12 +201,12 @@
 
         if(($month-1)>0 ){
     ?>
-        <a  href ="day1.php?month=<?=($month-1);?>&year=<?=($year);?>">
+        <a  href ="?month=<?=($month-1);?>&year=<?=($year);?>">
        <div class='day button'  >上個月</div></a> 
     <?php
         }else{
     ?>       
-        <a  href ="day1.php?month=<?=12;?>&year=<?=($year-1);?>">
+        <a  href ="?month=<?=12;?>&year=<?=($year-1);?>">
      <div class='day button'  >上個月</div></a> 
 
     <?php
@@ -198,13 +215,13 @@
     <?php
         if(($month+1)<=12 ){
     ?>
-        <a  href ="day1.php?month=<?=($month+1);?>&year=<?=($year);?>">
+        <a  href ="?month=<?=($month+1);?>&year=<?=($year);?>">
         <div class='day button1' >下個月</div></a>
     <?php
         }else{ 
        
     ?>
-        <a  href ="day1.php?month=<?=1;?>&year=<?=($year+1);?>">
+        <a  href ="?month=<?=1;?>&year=<?=($year+1);?>">
         <div class='day button1' >下個月</div></a> 
         
     <?php
@@ -278,7 +295,7 @@
     
     </div> 
     </div> 
-    
+<div>    
     
     
     
